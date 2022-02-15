@@ -1,0 +1,24 @@
+{
+  "name": "nft-assets-calculation",
+  "version": "0.0.1",
+  "description": "",
+  "main": "calculation.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leokuo0724/nft-assets-calculation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leokuo0724/nft-assets-calculation/issues"
+  },
+  "homepage": "https://github.com/leokuo0724/nft-assets-calculation#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "node-fetch": "^3.2.0"
+  }
+}
