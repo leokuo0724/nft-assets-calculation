@@ -1,5 +1,6 @@
 import fetch from 'node-fetch';
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
+import * as fs from 'fs';
 
 dotenv.config()
 
@@ -9,7 +10,7 @@ await fetch(process.env.SETTINGS_URL)
   .then((json) => assetSettings = json);
 
 // constants
-const MAX_RETRY = 1000
+const MAX_RETRY = 10000
 const TARGET_NUMBER = Infinity
 const EXCEPT_PRIORITIES = ['T2', 'T3']
 
@@ -41,6 +42,7 @@ for (const asset of assetSettings) {
 // generate assets
 const assetSet = new Set();
 let counter = 0;
+let plainText = ''
 while (assetSet.size < TARGET_NUMBER) {
   let characterTraits = '';
   let retry = true;
@@ -94,6 +96,14 @@ while (assetSet.size < TARGET_NUMBER) {
   }
 
   assetSet.add(characterTraits);
-  console.log(characterTraits);
+  plainText += `${characterTraits}\r\n`
 }
 console.log('MAX SIZE:', assetSet.size);
+
+fs.writeFile('./simulation.text', plainText, (error) => {
+  if (error) {
+    console.log(err);
+  } else {
+    console.log('Finish writing simulation file')
+  }
+})
