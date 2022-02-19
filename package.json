@@ -5,6 +5,7 @@
   "main": "calculation.js",
   "type": "module",
   "scripts": {
+    "start": "node calculation.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
