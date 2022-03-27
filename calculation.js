@@ -10,8 +10,9 @@ await fetch(process.env.SETTINGS_URL)
   .then((json) => assetSettings = json);
 
 // constants
-const MAX_RETRY = 10000
-const TARGET_NUMBER = Infinity
+const MAX_RETRY = 5
+// const TARGET_NUMBER = Infinity
+const TARGET_NUMBER = 10000
 const EXCEPT_PRIORITIES = ['T2', 'T3']
 
 // generate trait pool
@@ -84,13 +85,14 @@ while (assetSet.size < TARGET_NUMBER) {
     }
     if (!assetSet.has(characterTraits)) {
       retry = false;
+      counter = 0;
     } else {
       characterTraits = ''
       counter++;
-      // console.log('retry', counter);
+      console.log('retry', counter);
     }
   }
-  
+
   if (counter >= MAX_RETRY) {
     break;
   }
